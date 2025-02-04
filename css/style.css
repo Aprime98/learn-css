@@ -1,0 +1,168 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0; /* This is universal css meaning it applies to all elements */
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; /* 10px/16px = 62.5% -> 1rem = 10px */
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #D07E32;
+  padding: 3rem;
+  box-sizing: border-box; /* This is to ensure that the padding and border are included in the width and height of the element */
+}
+
+.header {
+  height: 90vh;
+  background-image: linear-gradient(to left top, rgb(207.8097619048, 125.4778571429, 49.1702380952), rgba(208, 126, 50, 0.6)), url("../foota.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  border-radius: 1rem;
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+.header__logo-box img {
+  height: 4rem;
+}
+
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  backface-visibility: hidden;
+}
+
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 700;
+  letter-spacing: 3rem;
+  animation: moveInLeft 1s ease-out;
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  letter-spacing: 1.2rem;
+  font-weight: 700;
+  animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+  /* 0% is what we want at the start of the animation*/
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+  /* 100% is what we want at the end of the animation*/
+  /* translateX means the animation is on X axis*/
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 8rem;
+  font-size: 1.6rem;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn--white {
+  background-color: #fff;
+  color: #D07E32;
+}
+
+.btn::after {
+  /* After pseudo element is like the btn, conent must be initialized, display same to btn, height and weight similar too... */
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.3s;
+}
+
+.btn--white::after {
+  /* to make after btn also white */
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.3) scaleY(1.6);
+  /* It can work but remember to use transition in parent element so that the transform is more animated */
+  opacity: 0;
+}
+
+.btn--animated {
+  /* This class is unique when I want the bottom animation... Animation fill mode ensures the button 1st disappears... */
+  animation: moveInBottom 1s ease-in 0.75s;
+  animation-fill-mode: backwards;
+}
+
+/*# sourceMappingURL=style.css.map */

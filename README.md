@@ -99,3 +99,73 @@ Pseudo-classes are a special state of a selector.
 We want the visited to remain the same color not changing, thats why they are being styled together
 
 -- display: inline-block; is used when the elements have heights and padding in them.
+
+pseudo-element is a copy of the element...
+
+---
+
+3 pillars of good html and css
+
+- Responsive design - good on all screen sizes.
+- Writing maintainable and scalable code - take care of how you organize your code, naming folders and more ...
+- Good web performance - little http requests, little files and less code..., reducing also the images!!!
+
+Usage of rem is soo good...
+you can change values by just modifying the font size...
+
+set font size to 10px for easier calculations.
+html{
+font-size: 10px;
+}
+
+-- Margin is used to specify the space between one element and the other...
+
+box-sizing: border-box; /_ This is to ensure that the padding and border are included in the width and height of the element _/
+\*\* This really ensures the visual formatting model just picks any specified width or height and use it when calculating the width or height respectively of a given element.
+
+--- Box Types: Block, inline & inline-block
+The box type is defined using the display property.
+e.g display: block; **_ flex, list-flex and table also produce block-level boxes."_**
+
+- Block boxes occupy 100% of parent's width and are vertically, one after another...e.g Divs and Ps are by default set as block level boxes.
+
+Inline box - content is distributed in lines.
+Therefore occupies only content's space, there is no line breaks like in border box (where a new div is by default in a new line)
+there are no heights and widths in inline box and paddings & margins can only be used horizontally...
+
+Inline Block combines the 2.
+Just like inline they occupy only content's space and there is no line breaks like in border box. But they display like block boxes...
+
+--- Positioning
+Normal - just default or natural way
+Float - This makes the element be uprooted from normal flow and taken to the utmost left or right; until it touches the edge of its containing box or another floated element. Text and inline elements will wrap around it. You can use clear fixes to position it well...
+Absolute positioning - When an element is set to fixed or absolute positioning the elemnt is also uprooted from normal flow. Absolute position element does not affect content or elements that surround at all. You use top left right and bottom to relatively position it in its container. Css solves any overlapping issues here using stacking context.
+
+-- Stacking Context
+Stacking contexts are like layers that form a stack.
+Most known is z-index...
+
+---- Architecture
+\*\*\* Think - About the layout and have an image of the webpage b4 writing code...
+Use a component driven design. Try to divide the page into modular components. Now any interface will have a collection of components held together by the overall layout of the page. Have clean and reusable components that can be reused in the same project and even different projects... Also make sure they are independent so that each can be completely on its own!
+
+\*\*\* Build - Build the layout now with a consistent structure for naming classes...
+The best approach for naming classes is BEM (Block Element Modifier). You have one name for the block that you will use as BEM to specify the block we are in. This is more code but way better and readable.
+
+<div class="header__logo-box">   : You use double bottom lines to separate block from its element.
+<span class="heading-primary--main">Football</span>  : You use double lines to separate block from its modifier. main is not really an element but just a modifier...
+ <a href="#" class="btn btn--white btn--animated">Meet our Team</a>   : Here the button is a block that will be reused while the rest are modifiers to change a bit the button and simply create some different versions of the same button.
+
+\*\*\* Architect - Creation of a logical architecture for the CSS with files and folders. Use the 7-1 method where: There are 7 diff folders for partial sass files and 1 main sass file to import all the others into a compiled CSS stylesheet.
+
+Use sass for cleaner css. You only need a compiler that will convert the sass code with css.
+
+- Sass gives us variables, that can be reusable
+  e.g colors, font-sizes, spacing e.t.c
+- Sass allows nesting of selectors inside one another
+- Operators for mathematical operations inside of css
+- partials and imports - which allows different files and importing them all into one single file.
+- mixins - this allows reusable pieces of css code
+- extends - this makes different selectors inherit declarations that are common to all of them
+- Control directives - helping to write code using conditionals and loops.
+  \*\* You use the scss (Sassy Css) because its similar to css.
