@@ -138,7 +138,8 @@ Just like inline they occupy only content's space and there is no line breaks li
 
 --- Positioning
 Normal - just default or natural way
-Float - This makes the element be uprooted from normal flow and taken to the utmost left or right; until it touches the edge of its containing box or another floated element. Text and inline elements will wrap around it. You can use clear fixes to position it well...
+Float - This makes the element be uprooted from normal flow and taken to the utmost left or right; until it touches the edge of its containing box or another floated element. Text and inline elements will wrap around it. You can use clear fixes to position it well and remove floats!...
+
 Absolute positioning - When an element is set to fixed or absolute positioning the elemnt is also uprooted from normal flow. Absolute position element does not affect content or elements that surround at all. You use top left right and bottom to relatively position it in its container. Css solves any overlapping issues here using stacking context.
 
 -- Stacking Context
@@ -169,3 +170,89 @@ Use sass for cleaner css. You only need a compiler that will convert the sass co
 - extends - this makes different selectors inherit declarations that are common to all of them
 - Control directives - helping to write code using conditionals and loops.
   \*\* You use the scss (Sassy Css) because its similar to css.
+
+Basic Responsive Designs:
+
+1. Fluid Layouts - To allow the webpage to adapt to the current viewport width/height
+   use % or vh/vw
+   use max-width instead of width
+
+- use of flexbox and grid is key. (floatlayout is also another layout)
+
+  2.Responsive units
+  use rem units instead of px
+
+  3.Flexible and fluid images
+  Images don't scale up automatically, use % for image dimensions together with max-width in certain situations.
+
+4. Media querries
+   Ensure you use it to cahnge css styles on certain viewport widths. (called breakpopints)
+
+\*\*\* How to build float layout grid:
+--- How to build a simple grid system:
+A grid helps build consistent interfaces.
+The grid can have 1-4 columns: ---
+
+- In the grid the columns must stay on their own solo rows.
+  .row{
+  max-width: 114rems; //we used rems and max width to specify the viewport width!//
+  }
+  margin: 0 auto; //This is used to center block elements in another block element e.g. div in another div ---
+
+--- How the attribute selector works:
+You can use [] boxes to enter an attribute in css that you want to style.
+e.g [src]{
+css goes here!
+}  
+Also e.g [class^="col-"] //This means pick and style all attributes that start with col-
+e.g [class^="col-"]{
+css goes here!
+}
+[class*="col-"] //Now this picks all attributes with the word col.
+[class$="col-"] //Dollar sign picks all attributes ending with col.
+
+---
+
+--- How the :not pseudo-class works;
+.row{
+/_margin-bottom: 8rem;_/
+
+$:not(:last-child){
+margin-bottom: 8rem;
+} //All rows will be selected except the last child when we use not pseudo class
+} ---
+
+--- How calc() works and its difference to sass operations
+// Usage of native calc is used instead of sass because in grid layouts all the calculations will be done later when the users layout is known, instead of now like in sass.
+width: calc((100% - $spacingSpace)/2);
+You should use #{} because we are using sass variable in a css ftn.
+e.g. width: calc((100% - #{$spacingSpace})/2);
+also e.g width: calc((100% - 2 \* #{spacingSpace})/2);
+
+---
+
+\*\*\* ABOUT section - And things to learn!!!
+--- Thinking about components
+--- How and why to use utility classes
+--- How to use the background-clip property
+.heading-secondary{
+font-size: 2.5rem;
+text-transform: uppercase;
+font-weight: 700;
+display: inline-block; //The bg will not be the whole width
+background-image: linear-gradient(to right, $light-orange, $dark-orange);
+
+    -webkit-background-clip: text;   //Clip the bg around the text only.
+    color: transparent;  // So the text can be colorless to allow the color to be seen on the text.
+
+}
+--- How to transform multiple properties simultaneously
+--- How to use the outline-offset property together with outline
+--- How to style elements that are not hovered while others are...
+
+.section-about{
+background-color: lighten($cream-bg, 20%);
+    padding:$space-elements 0;
+margin-top: -20vh;
+}
+I learnt how to lighten the bg, using lighten function. Also margin top of negative to move up.
